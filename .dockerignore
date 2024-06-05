@@ -1,0 +1,14 @@
+# git
+.git
+.gitignore
+
+# docker
+.docker
+
+# Python
+networking/__pycache__/
+networking/*/__pycache__/
+networking/*/*/__pycache__/
+networking/*/*/*/__pycache__/
+env/
+.env

@@ -1,0 +1,26 @@
+services:
+  db:
+    image: mysql:8.0
+    volumes:
+      - ./data/db:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    env_file:
+      - .env
+    ports:
+      - "1234:3306"
+    command: [ "--init-file", "/docker-entrypoint-initdb.d/init.sql" ]
+
+  web:
+    build:
+      context: .
+      args:
+       - DEBUG=True
+    ports:
+      - "8080:8000"
+    volumes:
+      - ./networking:/networking
+    command: >
+      sh -c "python manage.py wait_for_db &&
+             python manage.py runserver 0.0.0.0:8000"
+    env_file:
+      - .env
