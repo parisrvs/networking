@@ -21,4 +21,24 @@ urlpatterns = [
         views.UserSearchView.as_view(),
         name='user-search'
     ),
+    path(
+        'friend-request/',
+        views.FriendRequestView.as_view({'post': 'post'}),
+        name='friend-request'
+    ),
+    path(
+        'friend-request/<int:sender_id>/',
+        views.AcceptRejectFriendRequestView.as_view({'post': 'post'}),
+        name='accept-reject-friend-request'
+    ),
+    path(
+        'friends/',
+        views.ListFriendsView.as_view(),
+        name='friends'
+    ),
+    path(
+        'pending-requests/',
+        views.ListPendingRequestsView.as_view(),
+        name='pending-requests'
+    ),
 ]

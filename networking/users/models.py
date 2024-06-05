@@ -41,6 +41,11 @@ class User(AbstractBaseUser, PermissionsMixin):
     date_modified = models.DateTimeField(auto_now=True)
     date_joined = models.DateTimeField(auto_now_add=True)
 
+    friends = models.ManyToManyField(
+        'self',
+        blank=True
+    )
+
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
@@ -55,3 +60,37 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name = _('User')
         verbose_name_plural = _('Users')
         db_table = 'users'
+
+
+class FriendRequest(models.Model):
+    """ Friend request model """
+
+    class RequestStatus(models.TextChoices):
+        """ Request status choices """
+        PENDING = 'P', _('Pending')
+        ACCEPTED = 'A', _('Accepted')
+        REJECTED = 'R', _('Rejected')
+
+    sender = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='sent_requests'
+    )
+    receiver = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='received_requests'
+    )
+    status = models.CharField(
+        max_length=1,
+        choices=RequestStatus.choices,
+        default=RequestStatus.PENDING
+    )
+
+    class Meta:
+        """ Meta class for friend request model """
+        db_table = 'friend_requests'
+        verbose_name = _('Friend Request')
+        verbose_name_plural = _('Friend Requests')
+        unique_together = ('sender', 'receiver')
+        ordering = ['sender', 'receiver']

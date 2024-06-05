@@ -92,9 +92,8 @@ class LoginUserResponseSerializer(serializers.Serializer):  # noqa  # pylint: di
     token = serializers.CharField()
 
 
-class LoginUserErrorSerializer(serializers.Serializer):  # noqa  # pylint: disable=abstract-method
+class LoginUserErrorSerializer(RegisterUserResponseSerializer):  # noqa  # pylint: disable=abstract-method
     """ Serializer for the error message after logging in a user. """
-    message = serializers.CharField()
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -102,4 +101,17 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         """ Meta class for the UserSerializer. """
         model = User
-        fields = ['name', 'email']
+        fields = ['id', 'name', 'email']
+
+
+class FriendRequestSerializer(serializers.Serializer):  # noqa  # pylint: disable=abstract-method
+    """ Serializer for the FriendRequest model. """
+    receiver_id = serializers.IntegerField()
+
+
+class FriendRequestErrorSerializer(RegisterUserResponseSerializer):  # noqa  # pylint: disable=abstract-method
+    """ Serializer for the error message after sending a friend request."""
+
+
+class FriendRequestResponseSerializer(RegisterUserResponseSerializer):  # noqa  # pylint: disable=abstract-method
+    """ Serializer for the response message after sending a friend request. """
