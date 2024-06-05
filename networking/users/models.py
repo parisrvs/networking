@@ -1,5 +1,4 @@
 """User models module."""
-import re
 from django.db import models
 from django.contrib.auth.models import (
     AbstractBaseUser,
@@ -13,36 +12,7 @@ class UserManager(BaseUserManager):
     """User manager"""
 
     def create_user(self, email, password=None, **extra_fields):
-        """Validates, creates, and saves a new user"""
-        name = extra_fields.get('name')
-        if not name:
-            raise ValueError('User must have a name')
-        name = name.strip().lower().title()
-
-        if not password or not re.match(
-            r"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$",
-            password
-        ):
-            raise ValueError(
-                [
-                    'User must have a valid password',
-                    'password must contain at least 8 characters',
-                    'at least one alphabetical character',
-                    'at least one digit',
-                    'and at least one special character',
-                ]
-            )
-
-        if not email:
-            raise ValueError('User must have an email address')
-
-        if not re.match(
-            r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$',
-            email
-        ):
-            raise ValueError('User must have a valid email address')
-
-        extra_fields['name'] = name
+        """Creates, and saves a new user"""
         user = self.model(email=email, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
@@ -64,7 +34,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     using email instead of username
     """
 
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, blank=True, null=True)
     email = models.EmailField(max_length=255, unique=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
