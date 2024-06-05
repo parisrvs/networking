@@ -16,4 +16,9 @@ urlpatterns = [
         views.LoginView.as_view({'post': 'post'}),
         name='login'
     ),
+    path(
+        'search/',
+        views.UserSearchView.as_view(),
+        name='user-search'
+    ),
 ]

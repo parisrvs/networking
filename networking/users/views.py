@@ -1,7 +1,19 @@
 """ This file contains the views for the users app. """
-from rest_framework import viewsets, permissions, response, status
+from django.db.models import Q
+from rest_framework import (
+    viewsets,
+    permissions,
+    response,
+    status,
+    generics,
+    pagination
+)
 from rest_framework.authtoken.models import Token
-from drf_spectacular.utils import extend_schema
+from drf_spectacular.utils import (
+    extend_schema,
+    OpenApiParameter,
+    OpenApiTypes
+)
 from .models import User
 from .serializers import (
     RegisterUserSerializer,
@@ -9,8 +21,15 @@ from .serializers import (
     RegisterUserErrorSerializer,
     LoginUserSerializer,
     LoginUserResponseSerializer,
-    LoginUserErrorSerializer
+    LoginUserErrorSerializer,
+
+    UserSerializer
 )
+
+
+class TenPerPagePagination(pagination.PageNumberPagination):
+    """ This class sets the number of items per page. """
+    page_size = 10
 
 
 @extend_schema(
@@ -75,4 +94,29 @@ class LoginView(viewsets.ViewSet):
         return response.Response(
             {'message': 'Invalid password.'},
             status=status.HTTP_400_BAD_REQUEST
+        )
+
+
+@extend_schema(
+    parameters=[
+        OpenApiParameter(
+            name="search",
+            type=OpenApiTypes.STR,
+            location=OpenApiParameter.QUERY,
+            description="Search users by email or name",
+            required=True,
+        )
+    ],
+    responses={200: UserSerializer(many=True)},
+)
+class UserSearchView(generics.ListAPIView):
+    """ This view handles the search of users. """
+    serializer_class = UserSerializer
+    pagination_class = TenPerPagePagination
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        search_param = self.request.query_params.get('search', '')
+        return User.objects.filter(
+            Q(email=search_param) | Q(name__icontains=search_param)
         )

@@ -95,3 +95,11 @@ class LoginUserResponseSerializer(serializers.Serializer):  # noqa  # pylint: di
 class LoginUserErrorSerializer(serializers.Serializer):  # noqa  # pylint: disable=abstract-method
     """ Serializer for the error message after logging in a user. """
     message = serializers.CharField()
+
+
+class UserSerializer(serializers.ModelSerializer):
+    """ Serializer for the user model. """
+    class Meta:
+        """ Meta class for the UserSerializer. """
+        model = User
+        fields = ['name', 'email']
