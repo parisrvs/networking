@@ -1,7 +1,7 @@
 """ This file contains the views for the users app. """
+from datetime import timedelta
 from django.db.models import Q
 from django.utils import timezone
-from datetime import timedelta
 from rest_framework import (
     viewsets,
     permissions,
@@ -140,7 +140,12 @@ class FriendRequestView(viewsets.ViewSet):
     http_method_names = ['post']
 
     def post(self, request):
-        """ Sends a friend request."""
+        """
+        Sends a friend request.
+        receiver_id is the id of the user
+        to whom the friend request is being sent
+        """
+
         # Check if user has sent more than 3 friend requests in the last minute
         one_minute_ago = timezone.now() - timedelta(minutes=1)
 
@@ -230,12 +235,17 @@ class FriendRequestView(viewsets.ViewSet):
     }
 )
 class AcceptRejectFriendRequestView(viewsets.ViewSet):
-    """ This view handles the acceptance or rejection of friend requests."""
+    """
+    This view handles the acceptance or rejection of friend requests.
+    """
     permission_classes = [permissions.IsAuthenticated]
     http_method_names = ['post']
 
     def post(self, request, sender_id):
-        """ Accepts or rejects a friend request."""
+        """
+        Accepts or rejects a friend request.
+        sender_id is the id of the user who sent the friend request.
+        """
         # pylint: disable=no-member
         try:
             sender_id = int(sender_id)
