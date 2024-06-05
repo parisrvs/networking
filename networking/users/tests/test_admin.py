@@ -36,8 +36,9 @@ class UserAdminTest(TestCase):
                 'is_active',
                 'is_staff',
                 'is_superuser',
-                "groups",
-                "user_permissions",
+                'groups',
+                'user_permissions',
+                'friends'
             )
         )
         self.assertEqual(
@@ -81,8 +82,9 @@ class UserAdminTest(TestCase):
                             'is_active',
                             'is_staff',
                             'is_superuser',
-                            "groups",
-                            "user_permissions",
+                            'groups',
+                            'user_permissions',
+                            'friends'
                         )
                     }
                 ),
