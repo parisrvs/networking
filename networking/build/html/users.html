@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Users Views &#8212; &#34;Social Networking&#34;  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to “Social Networking“‘s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-users.views">
+<span id="users-views"></span><h1>Users Views<a class="headerlink" href="#module-users.views" title="Link to this heading">¶</a></h1>
+<p>This file contains the views for the users app.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="users.views.AcceptRejectFriendRequestView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.views.</span></span><span class="sig-name descname"><span class="pre">AcceptRejectFriendRequestView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.AcceptRejectFriendRequestView" title="Link to this definition">¶</a></dt>
+<dd><p>This view handles the acceptance or rejection of friend requests.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="users.views.AcceptRejectFriendRequestView.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sender_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.AcceptRejectFriendRequestView.post" title="Link to this definition">¶</a></dt>
+<dd><p>Accepts or rejects a friend request.
+sender_id is the id of the user who sent the friend request.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="users.views.FriendRequestView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.views.</span></span><span class="sig-name descname"><span class="pre">FriendRequestView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.FriendRequestView" title="Link to this definition">¶</a></dt>
+<dd><p>This view handles the sending of friend requests.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="users.views.FriendRequestView.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.FriendRequestView.post" title="Link to this definition">¶</a></dt>
+<dd><p>Sends a friend request.
+receiver_id is the id of the user
+to whom the friend request is being sent</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="users.views.ListFriendsView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.views.</span></span><span class="sig-name descname"><span class="pre">ListFriendsView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.ListFriendsView" title="Link to this definition">¶</a></dt>
+<dd><p>This view lists all friends of a user.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="users.views.ListFriendsView.get_queryset">
+<span class="sig-name descname"><span class="pre">get_queryset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.views.ListFriendsView.get_queryset" title="Link to this definition">¶</a></dt>
+<dd><p>Get the friends of the user.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="users.views.ListFriendsView.pagination_class">
+<span class="sig-name descname"><span class="pre">pagination_class</span></span><a class="headerlink" href="#users.views.ListFriendsView.pagination_class" title="Link to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#users.views.TenPerPagePagination" title="users.views.TenPerPagePagination"><code class="xref py py-class docutils literal notranslate"><span class="pre">TenPerPagePagination</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="users.views.ListFriendsView.serializer_class">
+<span class="sig-name descname"><span class="pre">serializer_class</span></span><a class="headerlink" href="#users.views.ListFriendsView.serializer_class" title="Link to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#users.serializers.UserSerializer" title="users.serializers.UserSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">UserSerializer</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="users.views.ListPendingRequestsView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.views.</span></span><span class="sig-name descname"><span class="pre">ListPendingRequestsView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.ListPendingRequestsView" title="Link to this definition">¶</a></dt>
+<dd><p>This view lists all pending friend requests of a user.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="users.views.ListPendingRequestsView.get_queryset">
+<span class="sig-name descname"><span class="pre">get_queryset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.views.ListPendingRequestsView.get_queryset" title="Link to this definition">¶</a></dt>
+<dd><p>Get the pending friend requests of the user.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="users.views.ListPendingRequestsView.pagination_class">
+<span class="sig-name descname"><span class="pre">pagination_class</span></span><a class="headerlink" href="#users.views.ListPendingRequestsView.pagination_class" title="Link to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#users.views.TenPerPagePagination" title="users.views.TenPerPagePagination"><code class="xref py py-class docutils literal notranslate"><span class="pre">TenPerPagePagination</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="users.views.ListPendingRequestsView.serializer_class">
+<span class="sig-name descname"><span class="pre">serializer_class</span></span><a class="headerlink" href="#users.views.ListPendingRequestsView.serializer_class" title="Link to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#users.serializers.UserSerializer" title="users.serializers.UserSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">UserSerializer</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="users.views.LoginView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.views.</span></span><span class="sig-name descname"><span class="pre">LoginView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.LoginView" title="Link to this definition">¶</a></dt>
+<dd><p>This view handles the login of users.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="users.views.LoginView.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.LoginView.post" title="Link to this definition">¶</a></dt>
+<dd><p>Logs in a user.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="users.views.RegisterView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.views.</span></span><span class="sig-name descname"><span class="pre">RegisterView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.RegisterView" title="Link to this definition">¶</a></dt>
+<dd><p>This view handles the registration of users.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="users.views.RegisterView.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.RegisterView.post" title="Link to this definition">¶</a></dt>
+<dd><p>Registers a new user.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="users.views.TenPerPagePagination">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.views.</span></span><span class="sig-name descname"><span class="pre">TenPerPagePagination</span></span><a class="headerlink" href="#users.views.TenPerPagePagination" title="Link to this definition">¶</a></dt>
+<dd><p>This class sets the number of items per page.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="users.views.UserSearchView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.views.</span></span><span class="sig-name descname"><span class="pre">UserSearchView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.UserSearchView" title="Link to this definition">¶</a></dt>
+<dd><p>This view handles the search of users.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="users.views.UserSearchView.get_queryset">
+<span class="sig-name descname"><span class="pre">get_queryset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.views.UserSearchView.get_queryset" title="Link to this definition">¶</a></dt>
+<dd><p>Get the list of items for this view.
+This must be an iterable, and may be a queryset.
+Defaults to using <cite>self.queryset</cite>.</p>
+<p>This method should always be used rather than accessing <cite>self.queryset</cite>
+directly, as <cite>self.queryset</cite> gets evaluated only once, and those results
+are cached for all subsequent requests.</p>
+<p>You may want to override this if you need to provide different
+querysets depending on the incoming request.</p>
+<p>(Eg. return a list of items that is specific to the user)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="users.views.UserSearchView.pagination_class">
+<span class="sig-name descname"><span class="pre">pagination_class</span></span><a class="headerlink" href="#users.views.UserSearchView.pagination_class" title="Link to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#users.views.TenPerPagePagination" title="users.views.TenPerPagePagination"><code class="xref py py-class docutils literal notranslate"><span class="pre">TenPerPagePagination</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="users.views.UserSearchView.serializer_class">
+<span class="sig-name descname"><span class="pre">serializer_class</span></span><a class="headerlink" href="#users.views.UserSearchView.serializer_class" title="Link to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#users.serializers.UserSerializer" title="users.serializers.UserSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">UserSerializer</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-users.serializers">
+<span id="users-serializers"></span><h1>Users Serializers<a class="headerlink" href="#module-users.serializers" title="Link to this heading">¶</a></h1>
+<p>This module contains the serializers for the users app.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="users.serializers.FriendRequestErrorSerializer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.serializers.</span></span><span class="sig-name descname"><span class="pre">FriendRequestErrorSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.serializers.FriendRequestErrorSerializer" title="Link to this definition">¶</a></dt>
+<dd><p>Serializer for the error message after sending a friend request.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="users.serializers.FriendRequestResponseSerializer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.serializers.</span></span><span class="sig-name descname"><span class="pre">FriendRequestResponseSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.serializers.FriendRequestResponseSerializer" title="Link to this definition">¶</a></dt>
+<dd><p>Serializer for the response message after sending a friend request.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="users.serializers.FriendRequestSerializer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.serializers.</span></span><span class="sig-name descname"><span class="pre">FriendRequestSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.serializers.FriendRequestSerializer" title="Link to this definition">¶</a></dt>
+<dd><p>Serializer for the FriendRequest model.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="users.serializers.LoginUserErrorSerializer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.serializers.</span></span><span class="sig-name descname"><span class="pre">LoginUserErrorSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.serializers.LoginUserErrorSerializer" title="Link to this definition">¶</a></dt>
+<dd><p>Serializer for the error message after logging in a user.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="users.serializers.LoginUserResponseSerializer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.serializers.</span></span><span class="sig-name descname"><span class="pre">LoginUserResponseSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.serializers.LoginUserResponseSerializer" title="Link to this definition">¶</a></dt>
+<dd><p>Serializer for the response message after logging in a user.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="users.serializers.LoginUserSerializer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.serializers.</span></span><span class="sig-name descname"><span class="pre">LoginUserSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.serializers.LoginUserSerializer" title="Link to this definition">¶</a></dt>
+<dd><p>Serializer for the login of a user.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="users.serializers.RegisterUserErrorSerializer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.serializers.</span></span><span class="sig-name descname"><span class="pre">RegisterUserErrorSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.serializers.RegisterUserErrorSerializer" title="Link to this definition">¶</a></dt>
+<dd><p>Serializer for the error message after registering a user.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="users.serializers.RegisterUserResponseSerializer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.serializers.</span></span><span class="sig-name descname"><span class="pre">RegisterUserResponseSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.serializers.RegisterUserResponseSerializer" title="Link to this definition">¶</a></dt>
+<dd><p>Serializer for the response message after registering a user.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="users.serializers.RegisterUserSerializer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.serializers.</span></span><span class="sig-name descname"><span class="pre">RegisterUserSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.serializers.RegisterUserSerializer" title="Link to this definition">¶</a></dt>
+<dd><p>This serializer is used to validate the data for creating a new user.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="users.serializers.RegisterUserSerializer.Meta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="headerlink" href="#users.serializers.RegisterUserSerializer.Meta" title="Link to this definition">¶</a></dt>
+<dd><p>Meta class for the UserSerializer.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="users.serializers.RegisterUserSerializer.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#users.serializers.RegisterUserSerializer.Meta.model" title="Link to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#users.models.User" title="users.models.User"><code class="xref py py-class docutils literal notranslate"><span class="pre">User</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.serializers.RegisterUserSerializer.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">validated_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.serializers.RegisterUserSerializer.create" title="Link to this definition">¶</a></dt>
+<dd><p>Create a new user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.serializers.RegisterUserSerializer.validate">
+<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attrs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.serializers.RegisterUserSerializer.validate" title="Link to this definition">¶</a></dt>
+<dd><p>Validate the data for creating a new user.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="users.serializers.UserSerializer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.serializers.</span></span><span class="sig-name descname"><span class="pre">UserSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.serializers.UserSerializer" title="Link to this definition">¶</a></dt>
+<dd><p>Serializer for the user model.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="users.serializers.UserSerializer.Meta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="headerlink" href="#users.serializers.UserSerializer.Meta" title="Link to this definition">¶</a></dt>
+<dd><p>Meta class for the UserSerializer.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="users.serializers.UserSerializer.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#users.serializers.UserSerializer.Meta.model" title="Link to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#users.models.User" title="users.models.User"><code class="xref py py-class docutils literal notranslate"><span class="pre">User</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-users.models">
+<span id="users-models"></span><h1>Users Models<a class="headerlink" href="#module-users.models" title="Link to this heading">¶</a></h1>
+<p>User models module.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="users.models.FriendRequest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.models.</span></span><span class="sig-name descname"><span class="pre">FriendRequest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.models.FriendRequest" title="Link to this definition">¶</a></dt>
+<dd><p>Friend request model</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="users.models.FriendRequest.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#users.models.FriendRequest.DoesNotExist" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="users.models.FriendRequest.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#users.models.FriendRequest.MultipleObjectsReturned" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="users.models.FriendRequest.RequestStatus">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RequestStatus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.models.FriendRequest.RequestStatus" title="Link to this definition">¶</a></dt>
+<dd><p>Request status choices</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="users.models.User">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.models.</span></span><span class="sig-name descname"><span class="pre">User</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.models.User" title="Link to this definition">¶</a></dt>
+<dd><p>Custom user model that supports login
+using email instead of username</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="users.models.User.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#users.models.User.DoesNotExist" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="users.models.User.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#users.models.User.MultipleObjectsReturned" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="users.models.UserManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.models.</span></span><span class="sig-name descname"><span class="pre">UserManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.models.UserManager" title="Link to this definition">¶</a></dt>
+<dd><p>User manager</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="users.models.UserManager.create_superuser">
+<span class="sig-name descname"><span class="pre">create_superuser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">extra_fields</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.models.UserManager.create_superuser" title="Link to this definition">¶</a></dt>
+<dd><p>Creates and saves a new superuser</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.models.UserManager.create_user">
+<span class="sig-name descname"><span class="pre">create_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">extra_fields</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.models.UserManager.create_user" title="Link to this definition">¶</a></dt>
+<dd><p>Creates, and saves a new user</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-users.tests.test_admin">
+<span id="users-tests"></span><h1>Users Tests<a class="headerlink" href="#module-users.tests.test_admin" title="Link to this heading">¶</a></h1>
+<p>Tests for the Django Admin modifications.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="users.tests.test_admin.AdminSiteTests">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.tests.test_admin.</span></span><span class="sig-name descname"><span class="pre">AdminSiteTests</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_admin.AdminSiteTests" title="Link to this definition">¶</a></dt>
+<dd><p>Test cases for admin site</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_admin.AdminSiteTests.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_admin.AdminSiteTests.setUp" title="Link to this definition">¶</a></dt>
+<dd><p>Setup function for tests</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_admin.AdminSiteTests.test_create_user_page">
+<span class="sig-name descname"><span class="pre">test_create_user_page</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_admin.AdminSiteTests.test_create_user_page" title="Link to this definition">¶</a></dt>
+<dd><p>Test that the create user page works</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_admin.AdminSiteTests.test_user_change_page">
+<span class="sig-name descname"><span class="pre">test_user_change_page</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_admin.AdminSiteTests.test_user_change_page" title="Link to this definition">¶</a></dt>
+<dd><p>Test that the user edit page works</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_admin.AdminSiteTests.test_user_delete">
+<span class="sig-name descname"><span class="pre">test_user_delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_admin.AdminSiteTests.test_user_delete" title="Link to this definition">¶</a></dt>
+<dd><p>Test that the user delete works</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_admin.AdminSiteTests.test_users_listed">
+<span class="sig-name descname"><span class="pre">test_users_listed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_admin.AdminSiteTests.test_users_listed" title="Link to this definition">¶</a></dt>
+<dd><p>Test that users are listed on user page</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="users.tests.test_admin.MockSuperUser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.tests.test_admin.</span></span><span class="sig-name descname"><span class="pre">MockSuperUser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">is_superuser</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_admin.MockSuperUser" title="Link to this definition">¶</a></dt>
+<dd><p>Mock Super User</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="users.tests.test_admin.UserAdminTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.tests.test_admin.</span></span><span class="sig-name descname"><span class="pre">UserAdminTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_admin.UserAdminTest" title="Link to this definition">¶</a></dt>
+<dd><p>Test cases for UserAdmin class</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_admin.UserAdminTest.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_admin.UserAdminTest.setUp" title="Link to this definition">¶</a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_admin.UserAdminTest.test_add_fieldsets">
+<span class="sig-name descname"><span class="pre">test_add_fieldsets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_admin.UserAdminTest.test_add_fieldsets" title="Link to this definition">¶</a></dt>
+<dd><p>Test add fieldsets</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_admin.UserAdminTest.test_fieldsets">
+<span class="sig-name descname"><span class="pre">test_fieldsets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_admin.UserAdminTest.test_fieldsets" title="Link to this definition">¶</a></dt>
+<dd><p>Test fieldsets</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_admin.UserAdminTest.test_model_admin">
+<span class="sig-name descname"><span class="pre">test_model_admin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_admin.UserAdminTest.test_model_admin" title="Link to this definition">¶</a></dt>
+<dd><p>Test model admin</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_admin.UserAdminTest.test_readonly_fields">
+<span class="sig-name descname"><span class="pre">test_readonly_fields</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_admin.UserAdminTest.test_readonly_fields" title="Link to this definition">¶</a></dt>
+<dd><p>Test readonly fields</p>
+</dd></dl>
+
+</dd></dl>
+
+<p id="module-users.tests.test_authentication">Tests for the authentication views</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="users.tests.test_authentication.LoginViewTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.tests.test_authentication.</span></span><span class="sig-name descname"><span class="pre">LoginViewTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_authentication.LoginViewTest" title="Link to this definition">¶</a></dt>
+<dd><p>Tests for the LoginView</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_authentication.LoginViewTest.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_authentication.LoginViewTest.setUp" title="Link to this definition">¶</a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_authentication.LoginViewTest.test_login_invalid_email">
+<span class="sig-name descname"><span class="pre">test_login_invalid_email</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_authentication.LoginViewTest.test_login_invalid_email" title="Link to this definition">¶</a></dt>
+<dd><p>Test that an invalid email is not accepted</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_authentication.LoginViewTest.test_login_invalid_password">
+<span class="sig-name descname"><span class="pre">test_login_invalid_password</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_authentication.LoginViewTest.test_login_invalid_password" title="Link to this definition">¶</a></dt>
+<dd><p>Test that an invalid password is not accepted</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_authentication.LoginViewTest.test_login_success">
+<span class="sig-name descname"><span class="pre">test_login_success</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_authentication.LoginViewTest.test_login_success" title="Link to this definition">¶</a></dt>
+<dd><p>Test that a user can login successfully</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="users.tests.test_authentication.RegisterViewTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.tests.test_authentication.</span></span><span class="sig-name descname"><span class="pre">RegisterViewTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_authentication.RegisterViewTest" title="Link to this definition">¶</a></dt>
+<dd><p>Tests for the RegisterView</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_authentication.RegisterViewTest.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_authentication.RegisterViewTest.setUp" title="Link to this definition">¶</a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_authentication.RegisterViewTest.test_register_invalid_email">
+<span class="sig-name descname"><span class="pre">test_register_invalid_email</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_authentication.RegisterViewTest.test_register_invalid_email" title="Link to this definition">¶</a></dt>
+<dd><p>Test that an invalid email is not accepted</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_authentication.RegisterViewTest.test_register_invalid_password">
+<span class="sig-name descname"><span class="pre">test_register_invalid_password</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_authentication.RegisterViewTest.test_register_invalid_password" title="Link to this definition">¶</a></dt>
+<dd><p>Test that an invalid password is not accepted</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_authentication.RegisterViewTest.test_register_passwords_do_not_match">
+<span class="sig-name descname"><span class="pre">test_register_passwords_do_not_match</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_authentication.RegisterViewTest.test_register_passwords_do_not_match" title="Link to this definition">¶</a></dt>
+<dd><p>Test that passwords must match</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_authentication.RegisterViewTest.test_register_success">
+<span class="sig-name descname"><span class="pre">test_register_success</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_authentication.RegisterViewTest.test_register_success" title="Link to this definition">¶</a></dt>
+<dd><p>Test that a user can register successfully</p>
+</dd></dl>
+
+</dd></dl>
+
+<p id="module-users.tests.test_requests">Tests for the friend request endpoints</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="users.tests.test_requests.AcceptRejectFriendRequestViewTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.tests.test_requests.</span></span><span class="sig-name descname"><span class="pre">AcceptRejectFriendRequestViewTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_requests.AcceptRejectFriendRequestViewTest" title="Link to this definition">¶</a></dt>
+<dd><p>Tests for the AcceptRejectFriendRequestView</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_requests.AcceptRejectFriendRequestViewTest.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_requests.AcceptRejectFriendRequestViewTest.setUp" title="Link to this definition">¶</a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_requests.AcceptRejectFriendRequestViewTest.test_accept_friend_request">
+<span class="sig-name descname"><span class="pre">test_accept_friend_request</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_requests.AcceptRejectFriendRequestViewTest.test_accept_friend_request" title="Link to this definition">¶</a></dt>
+<dd><p>Test accepting a friend request</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_requests.AcceptRejectFriendRequestViewTest.test_accept_friend_request_with_invalid_action">
+<span class="sig-name descname"><span class="pre">test_accept_friend_request_with_invalid_action</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_requests.AcceptRejectFriendRequestViewTest.test_accept_friend_request_with_invalid_action" title="Link to this definition">¶</a></dt>
+<dd><p>Test accepting a friend request with an invalid action</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_requests.AcceptRejectFriendRequestViewTest.test_accept_nonexistent_friend_request">
+<span class="sig-name descname"><span class="pre">test_accept_nonexistent_friend_request</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_requests.AcceptRejectFriendRequestViewTest.test_accept_nonexistent_friend_request" title="Link to this definition">¶</a></dt>
+<dd><p>Test accepting a nonexistent friend request</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_requests.AcceptRejectFriendRequestViewTest.test_accept_nonexistent_user">
+<span class="sig-name descname"><span class="pre">test_accept_nonexistent_user</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_requests.AcceptRejectFriendRequestViewTest.test_accept_nonexistent_user" title="Link to this definition">¶</a></dt>
+<dd><p>Test accepting a nonexistent friend request</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_requests.AcceptRejectFriendRequestViewTest.test_reject_friend_request">
+<span class="sig-name descname"><span class="pre">test_reject_friend_request</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_requests.AcceptRejectFriendRequestViewTest.test_reject_friend_request" title="Link to this definition">¶</a></dt>
+<dd><p>Test rejecting a friend request</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="users.tests.test_requests.FriendRequestViewTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.tests.test_requests.</span></span><span class="sig-name descname"><span class="pre">FriendRequestViewTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_requests.FriendRequestViewTest" title="Link to this definition">¶</a></dt>
+<dd><p>Tests for the FriendRequestView</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_requests.FriendRequestViewTest.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_requests.FriendRequestViewTest.setUp" title="Link to this definition">¶</a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_requests.FriendRequestViewTest.test_rate_limit">
+<span class="sig-name descname"><span class="pre">test_rate_limit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_requests.FriendRequestViewTest.test_rate_limit" title="Link to this definition">¶</a></dt>
+<dd><p>Test rate limiting</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_requests.FriendRequestViewTest.test_send_duplicate_friend_request">
+<span class="sig-name descname"><span class="pre">test_send_duplicate_friend_request</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_requests.FriendRequestViewTest.test_send_duplicate_friend_request" title="Link to this definition">¶</a></dt>
+<dd><p>Test sending a duplicate friend request</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_requests.FriendRequestViewTest.test_send_friend_request">
+<span class="sig-name descname"><span class="pre">test_send_friend_request</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_requests.FriendRequestViewTest.test_send_friend_request" title="Link to this definition">¶</a></dt>
+<dd><p>Test sending a friend request</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_requests.FriendRequestViewTest.test_send_friend_request_to_friend">
+<span class="sig-name descname"><span class="pre">test_send_friend_request_to_friend</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_requests.FriendRequestViewTest.test_send_friend_request_to_friend" title="Link to this definition">¶</a></dt>
+<dd><p>Test sending a friend request to a friend</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_requests.FriendRequestViewTest.test_send_friend_request_to_nonexistent_user">
+<span class="sig-name descname"><span class="pre">test_send_friend_request_to_nonexistent_user</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_requests.FriendRequestViewTest.test_send_friend_request_to_nonexistent_user" title="Link to this definition">¶</a></dt>
+<dd><p>Test sending a friend request to a nonexistent user</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_requests.FriendRequestViewTest.test_send_friend_request_to_rejected">
+<span class="sig-name descname"><span class="pre">test_send_friend_request_to_rejected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_requests.FriendRequestViewTest.test_send_friend_request_to_rejected" title="Link to this definition">¶</a></dt>
+<dd><p>Test sending a friend request to a rejected request</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_requests.FriendRequestViewTest.test_send_friend_request_to_self">
+<span class="sig-name descname"><span class="pre">test_send_friend_request_to_self</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_requests.FriendRequestViewTest.test_send_friend_request_to_self" title="Link to this definition">¶</a></dt>
+<dd><p>Test sending a friend request to self</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="users.tests.test_requests.ListFriendsViewTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.tests.test_requests.</span></span><span class="sig-name descname"><span class="pre">ListFriendsViewTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_requests.ListFriendsViewTest" title="Link to this definition">¶</a></dt>
+<dd><p>Tests for the ListFriendsView</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_requests.ListFriendsViewTest.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_requests.ListFriendsViewTest.setUp" title="Link to this definition">¶</a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_requests.ListFriendsViewTest.test_list_friends">
+<span class="sig-name descname"><span class="pre">test_list_friends</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_requests.ListFriendsViewTest.test_list_friends" title="Link to this definition">¶</a></dt>
+<dd><p>Test listing friends</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_requests.ListFriendsViewTest.test_list_friends_empty">
+<span class="sig-name descname"><span class="pre">test_list_friends_empty</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_requests.ListFriendsViewTest.test_list_friends_empty" title="Link to this definition">¶</a></dt>
+<dd><p>Test listing friends with no friends</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_requests.ListFriendsViewTest.test_list_friends_symetrical">
+<span class="sig-name descname"><span class="pre">test_list_friends_symetrical</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_requests.ListFriendsViewTest.test_list_friends_symetrical" title="Link to this definition">¶</a></dt>
+<dd><p>Test listing friends symetrical relationship</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="users.tests.test_requests.ListPendingRequestsViewtest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.tests.test_requests.</span></span><span class="sig-name descname"><span class="pre">ListPendingRequestsViewtest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_requests.ListPendingRequestsViewtest" title="Link to this definition">¶</a></dt>
+<dd><p>Tests for the ListPendingRequestsView</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_requests.ListPendingRequestsViewtest.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_requests.ListPendingRequestsViewtest.setUp" title="Link to this definition">¶</a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_requests.ListPendingRequestsViewtest.test_list_pending_requests">
+<span class="sig-name descname"><span class="pre">test_list_pending_requests</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_requests.ListPendingRequestsViewtest.test_list_pending_requests" title="Link to this definition">¶</a></dt>
+<dd><p>Test listing pending requests</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-users.tests.test_search">
+<dt class="sig sig-object py" id="users.tests.test_search.UserSearchViewTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.tests.test_search.</span></span><span class="sig-name descname"><span class="pre">UserSearchViewTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_search.UserSearchViewTest" title="Link to this definition">¶</a></dt>
+<dd><p>Tests for the UserSearchView</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_search.UserSearchViewTest.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_search.UserSearchViewTest.setUp" title="Link to this definition">¶</a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_search.UserSearchViewTest.setUpTestData">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">setUpTestData</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_search.UserSearchViewTest.setUpTestData" title="Link to this definition">¶</a></dt>
+<dd><p>Load initial data for the TestCase.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_search.UserSearchViewTest.test_pagination">
+<span class="sig-name descname"><span class="pre">test_pagination</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_search.UserSearchViewTest.test_pagination" title="Link to this definition">¶</a></dt>
+<dd><p>Test that the search results are paginated</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_search.UserSearchViewTest.test_search_by_email">
+<span class="sig-name descname"><span class="pre">test_search_by_email</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_search.UserSearchViewTest.test_search_by_email" title="Link to this definition">¶</a></dt>
+<dd><p>Test that a user can be searched by email</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="users.tests.test_search.UserSearchViewTest.test_search_by_name">
+<span class="sig-name descname"><span class="pre">test_search_by_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.tests.test_search.UserSearchViewTest.test_search_by_name" title="Link to this definition">¶</a></dt>
+<dd><p>Test that a user can be searched by name</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-users.admin">
+<span id="users-admin"></span><h1>Users Admin<a class="headerlink" href="#module-users.admin" title="Link to this heading">¶</a></h1>
+<p>Django admin customizations.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="users.admin.FriendRequestAdmin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.admin.</span></span><span class="sig-name descname"><span class="pre">FriendRequestAdmin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">admin_site</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.admin.FriendRequestAdmin" title="Link to this definition">¶</a></dt>
+<dd><p>Friend request admin</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="users.admin.UserAdmin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">users.admin.</span></span><span class="sig-name descname"><span class="pre">UserAdmin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">admin_site</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.admin.UserAdmin" title="Link to this definition">¶</a></dt>
+<dd><p>User admin</p>
+</dd></dl>
+
+</section>
+<section id="module-users.urls">
+<span id="users-urls"></span><h1>Users Urls<a class="headerlink" href="#module-users.urls" title="Link to this heading">¶</a></h1>
+<p>This module contains the urls for the users app.
+1) Register a new user - POST /register/
+2) Login a user - POST /login/
+3) Search for a user - GET /search/
+4) Send friend request - POST /friend-request/
+5) Accept or reject a friend request - POST /friend-request/&lt;int:sender_id&gt;/
+6) List friends - GET /friends/
+7) List pending requests - GET /pending-requests/</p>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">"Social Networking"</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Users Views</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#users.views.AcceptRejectFriendRequestView"><code class="docutils literal notranslate"><span class="pre">AcceptRejectFriendRequestView</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#users.views.FriendRequestView"><code class="docutils literal notranslate"><span class="pre">FriendRequestView</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#users.views.ListFriendsView"><code class="docutils literal notranslate"><span class="pre">ListFriendsView</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#users.views.ListPendingRequestsView"><code class="docutils literal notranslate"><span class="pre">ListPendingRequestsView</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#users.views.LoginView"><code class="docutils literal notranslate"><span class="pre">LoginView</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#users.views.RegisterView"><code class="docutils literal notranslate"><span class="pre">RegisterView</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#users.views.TenPerPagePagination"><code class="docutils literal notranslate"><span class="pre">TenPerPagePagination</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#users.views.UserSearchView"><code class="docutils literal notranslate"><span class="pre">UserSearchView</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#module-users.serializers">Users Serializers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#users.serializers.FriendRequestErrorSerializer"><code class="docutils literal notranslate"><span class="pre">FriendRequestErrorSerializer</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#users.serializers.FriendRequestResponseSerializer"><code class="docutils literal notranslate"><span class="pre">FriendRequestResponseSerializer</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#users.serializers.FriendRequestSerializer"><code class="docutils literal notranslate"><span class="pre">FriendRequestSerializer</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#users.serializers.LoginUserErrorSerializer"><code class="docutils literal notranslate"><span class="pre">LoginUserErrorSerializer</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#users.serializers.LoginUserResponseSerializer"><code class="docutils literal notranslate"><span class="pre">LoginUserResponseSerializer</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#users.serializers.LoginUserSerializer"><code class="docutils literal notranslate"><span class="pre">LoginUserSerializer</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#users.serializers.RegisterUserErrorSerializer"><code class="docutils literal notranslate"><span class="pre">RegisterUserErrorSerializer</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#users.serializers.RegisterUserResponseSerializer"><code class="docutils literal notranslate"><span class="pre">RegisterUserResponseSerializer</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#users.serializers.RegisterUserSerializer"><code class="docutils literal notranslate"><span class="pre">RegisterUserSerializer</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#users.serializers.UserSerializer"><code class="docutils literal notranslate"><span class="pre">UserSerializer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#module-users.models">Users Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#users.models.FriendRequest"><code class="docutils literal notranslate"><span class="pre">FriendRequest</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#users.models.User"><code class="docutils literal notranslate"><span class="pre">User</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#users.models.UserManager"><code class="docutils literal notranslate"><span class="pre">UserManager</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#module-users.tests.test_admin">Users Tests</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#users.tests.test_admin.AdminSiteTests"><code class="docutils literal notranslate"><span class="pre">AdminSiteTests</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#users.tests.test_admin.MockSuperUser"><code class="docutils literal notranslate"><span class="pre">MockSuperUser</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#users.tests.test_admin.UserAdminTest"><code class="docutils literal notranslate"><span class="pre">UserAdminTest</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#users.tests.test_authentication.LoginViewTest"><code class="docutils literal notranslate"><span class="pre">LoginViewTest</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#users.tests.test_authentication.RegisterViewTest"><code class="docutils literal notranslate"><span class="pre">RegisterViewTest</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#users.tests.test_requests.AcceptRejectFriendRequestViewTest"><code class="docutils literal notranslate"><span class="pre">AcceptRejectFriendRequestViewTest</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#users.tests.test_requests.FriendRequestViewTest"><code class="docutils literal notranslate"><span class="pre">FriendRequestViewTest</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#users.tests.test_requests.ListFriendsViewTest"><code class="docutils literal notranslate"><span class="pre">ListFriendsViewTest</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#users.tests.test_requests.ListPendingRequestsViewtest"><code class="docutils literal notranslate"><span class="pre">ListPendingRequestsViewtest</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#users.tests.test_search.UserSearchViewTest"><code class="docutils literal notranslate"><span class="pre">UserSearchViewTest</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#module-users.admin">Users Admin</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#users.admin.FriendRequestAdmin"><code class="docutils literal notranslate"><span class="pre">FriendRequestAdmin</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#users.admin.UserAdmin"><code class="docutils literal notranslate"><span class="pre">UserAdmin</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#module-users.urls">Users Urls</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to “Social Networking“‘s documentation!</a></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Parijat.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.3.7</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/users.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -53,6 +53,7 @@ class RegisterUserSerializer(serializers.ModelSerializer):
         return attrs
 
     def create(self, validated_data):
+        """ Create a new user. """
         validated_data.pop('confirm_password')
         password = validated_data.pop('password')
         user = User(**validated_data)
