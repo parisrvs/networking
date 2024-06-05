@@ -1,5 +1,7 @@
 """ This file contains the views for the users app. """
 from django.db.models import Q
+from django.utils import timezone
+from datetime import timedelta
 from rest_framework import (
     viewsets,
     permissions,
@@ -139,6 +141,20 @@ class FriendRequestView(viewsets.ViewSet):
 
     def post(self, request):
         """ Sends a friend request."""
+        # Check if user has sent more than 3 friend requests in the last minute
+        one_minute_ago = timezone.now() - timedelta(minutes=1)
+
+        #  pylint: disable=no-member
+        recent_requests = FriendRequest.objects.filter(
+            sender=request.user,
+            created_at__gte=one_minute_ago
+        ).count()
+        if recent_requests >= 3:
+            return response.Response(
+                {'message': 'Too many requests.'},
+                status=status.HTTP_429_TOO_MANY_REQUESTS
+            )
+
         receiver_id = request.data.get('receiver_id')
         try:
             receiver_id = int(receiver_id)

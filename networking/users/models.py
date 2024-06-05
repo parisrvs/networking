@@ -87,6 +87,9 @@ class FriendRequest(models.Model):
         default=RequestStatus.PENDING
     )
 
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
     class Meta:
         """ Meta class for friend request model """
         db_table = 'friend_requests'

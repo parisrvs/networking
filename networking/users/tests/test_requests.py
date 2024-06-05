@@ -14,11 +14,42 @@ class FriendRequestViewTest(APITestCase):
     def setUp(self):
         self.user1 = User.objects.create_user(
             email='user1@example.com',
-            password='pass@1234')
+            password='pass@1234'
+        )
         self.user2 = User.objects.create_user(
             email='user2@example.com',
-            password='pass@1234')
+            password='pass@1234'
+        )
+
+        self.user3 = User.objects.create_user(
+            email='user3@example.com',
+            password='pass@1234'
+        )
+
+        self.user4 = User.objects.create_user(
+            email='user4@example.com',
+            password='pass@1234'
+        )
+
+        self.user5 = User.objects.create_user(
+            email='user5@example.com',
+            password='pass@1234'
+        )
+
         self.url = reverse('users:friend-request')
+
+    def test_rate_limit(self):
+        """ Test rate limiting """
+        self.client.force_authenticate(user=self.user1)
+        self.client.post(self.url, {'receiver_id': self.user2.id})
+        self.client.post(self.url, {'receiver_id': self.user3.id})
+        self.client.post(self.url, {'receiver_id': self.user4.id})
+
+        response = self.client.post(self.url, {'receiver_id': self.user5.id})
+        self.assertEqual(
+            response.status_code,
+            status.HTTP_429_TOO_MANY_REQUESTS)
+        self.assertIn('Too many requests.', response.data['message'])
 
     def test_send_friend_request(self):
         """ Test sending a friend request """
